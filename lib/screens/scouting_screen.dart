@@ -10,7 +10,6 @@ class ScoutingScreen extends ConsumerStatefulWidget {
   @override
   ConsumerState<ScoutingScreen> createState() => _ScoutingScreen();
 }
-
 class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
 
   @override
@@ -120,7 +119,7 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                                       Text(
                                         "Score: $l1Points",
                                         style: GoogleFonts.nunito(
-                                          fontSize: 14.0,
+                                          fontSize: 20.0,
                                           fontWeight: FontWeight.w600,
                                           color: Colors.orangeAccent,
                                         ),
@@ -190,9 +189,9 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                                     ),
                                   ),
                                       Text(
-                                    "$l2Points",
+                                    "Score: $l2Points",
                                   style: GoogleFonts.nunito(
-                                    fontSize: 18.0,
+                                    fontSize: 20.0,
                                     fontWeight: FontWeight.w600,
                                     color: Colors.orangeAccent,
                                   ),
@@ -239,13 +238,18 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                       child: Consumer(
                         builder: (context, ref, child) {
                           final l3Count = ref.watch(coralL3);
+                          final l3Points = l3Count * 6;
                           return Padding(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 20.0, vertical: 12.0),
                               child: Row(
                                 children: [
                                   Expanded(
-                                    child: Text(
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                      Text(
                                       "Coral L3",
                                       style: GoogleFonts.nunito(
                                         fontSize: 18.0,
@@ -253,6 +257,16 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                                         color: Colors.white,
                                       ),
                                     ),
+                                    Text(
+                                      "Score: $l3Points",
+                                      style: GoogleFonts.nunito(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.w600,
+                                        color: Colors.orangeAccent,
+                                      ),
+                                    ),
+                                  ],
+                              ),
                                   ),
                                   Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -289,8 +303,8 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                                       ),
                                     ],
                                   ),
-                                ],
-                              ),
+                            ],
+                          ),
                           );
                         },
                       ),
@@ -305,13 +319,18 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                                 child: Consumer(
                                   builder: (context, ref, child) {
                                     final l4Count = ref.watch(coralL4);
+                                    final l4Points = l4Count * 8;
                                     return Padding(
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 20.0, vertical: 12.0),
                                       child: Row(
                                         children: [
                                           Expanded(
-                                              child: Text(
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                children: [
+                                                Text(
                                                 "Coral L4",
                                                 style: GoogleFonts.nunito(
                                                   fontSize: 18.0,
@@ -319,6 +338,16 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                                                   color: Colors.white,
                                                 ),
                                               ),
+                                                  Text(
+                                                    "Score: $l4Points",
+                                                    style: GoogleFonts.nunito(
+                                                      fontSize: 20.0,
+                                                      fontWeight: FontWeight.w600,
+                                                      color: Colors.orangeAccent,
+                                                    ),
+                                                  ),
+                                            ],
+                                          ),
                                           ),
                                           Row(
                                             mainAxisSize: MainAxisSize.min,
@@ -362,221 +391,275 @@ class _ScoutingScreen extends ConsumerState<ScoutingScreen> {
                                   },
                                 ),
                               ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.12),
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  border: Border.all(color: Colors.white
-                                      .withValues(alpha: 0.2), width: 1.0),
-                                ),
-                                child: Consumer(
-                                  builder: (context, ref, child) {
-                                    final processedAlgaeCount = ref.watch(
-                                        processedAlgae);
-                                    final processedAlgaePoints = processedAlgaeCount *
-                                        6;
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20.0, vertical: 12.0),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                              child: Text(
-                                                "Processed Algae",
-                                                style: GoogleFonts.nunito(
-                                                  fontSize: 18.0,
-                                                  fontWeight: FontWeight.w700,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              IconButton(
-                                                onPressed: () =>
-                                                    ref
-                                                        .read(
-                                                        processedAlgae.notifier)
-                                                        .decrement(),
-                                                icon: const Icon(
-                                                    Icons.remove_circle_outline,
-                                                    color: Colors.white),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets
-                                                    .symmetric(
-                                                    horizontal: 10.0),
-                                                child: Text(
-                                                  "$processedAlgaeCount",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.w900,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                              IconButton(
-                                                onPressed: () =>
-                                                    ref
-                                                        .read(
-                                                        processedAlgae.notifier)
-                                                        .increment(),
-                                                icon: const Icon(
-                                                    Icons.add_circle_outline,
-                                                    color: Colors.white),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(color: Colors.white.withValues(alpha: 0.2), width: 1.0),
+                      ),
+                      child: Consumer(
+                        builder: (context, ref, child) {
+                          final processedAlgaeCount = ref.watch(processedAlgae);
+                          final processedAlgaePoints = processedAlgaeCount * 6;
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Processed Algae",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white,
+                                        ),
                                       ),
-                                    );
-                                  },
+                                      Text(
+                                        "Score: $processedAlgaePoints",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.orangeAccent,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.12),
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  border: Border.all(color: Colors.white
-                                      .withValues(alpha: 0.2), width: 1.0),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () => ref.read(processedAlgae.notifier).decrement(),
+                                      icon: const Icon(Icons.remove_circle_outline, color: Colors.white),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Text(
+                                        "$processedAlgaeCount",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w900,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () => ref.read(processedAlgae.notifier).increment(),
+                                      icon: const Icon(Icons.add_circle_outline, color: Colors.white),
+                                    ),
+                                  ],
                                 ),
-                                child: Consumer(
-                                  builder: (context, ref, child) {
-                                    final unprocessedAlgaeCount = ref.watch(
-                                        unprocessedAlgae);
-                                    final unprocessedAlgaePoints = unprocessedAlgaeCount *
-                                        2;
-                                    return Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 20.0, vertical: 12.0),
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: Text(
-                                              "Unprocessed Algae",
-                                              style: GoogleFonts.nunito(
-                                                fontSize: 18.0,
-                                                fontWeight: FontWeight.w700,
-                                                color: Colors.white,
-                                              ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(color: Colors.white.withValues(alpha: 0.2), width: 1.0),
+                      ),
+                      child: Consumer(
+                        builder: (context, ref, child) {
+                          final unprocessedAlgaeCount = ref.watch(unprocessedAlgae);
+                          final unprocessedAlgaePoints = unprocessedAlgaeCount * 2;
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Unprocessed Algae",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Score: $unprocessedAlgaePoints",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.orangeAccent,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () => ref.read(unprocessedAlgae.notifier).decrement(),
+                                      icon: const Icon(Icons.remove_circle_outline, color: Colors.white),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Text(
+                                        "$unprocessedAlgaeCount",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w900,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () => ref.read(unprocessedAlgae.notifier).increment(),
+                                      icon: const Icon(Icons.add_circle_outline, color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white.withValues(alpha: 0.12),
+                        borderRadius: BorderRadius.circular(16.0),
+                        border: Border.all(color: Colors.white.withValues(alpha: 0.2), width: 1.0),
+                      ),
+                      child: Consumer(
+                        builder: (context, ref, child) {
+                          final netCount = ref.watch(algaeNet);
+                          final netPoints = netCount * 4;
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 12.0),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Algae Net",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 18.0,
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      Text(
+                                        "Score: $netPoints",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w600,
+                                          color: Colors.orangeAccent,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    IconButton(
+                                      onPressed: () => ref.read(algaeNet.notifier).decrement(),
+                                      icon: const Icon(Icons.remove_circle_outline, color: Colors.white),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                                      child: Text(
+                                        "$netCount",
+                                        style: GoogleFonts.nunito(
+                                          fontSize: 20.0,
+                                          fontWeight: FontWeight.w900,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                    IconButton(
+                                      onPressed: () => ref.read(algaeNet.notifier).increment(),
+                                      icon: const Icon(Icons.add_circle_outline, color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                    ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Colors.white.withValues(
+                                                  alpha: 0.18),
+                                              borderRadius: BorderRadius
+                                                  .circular(16.0),
+                                              border: Border.all(
+                                                  color: Colors.orangeAccent,
+                                                  width: 1.5),
+                                            ),
+                                            child: Consumer(
+                                              builder: (context, ref, child) {
+                                                final totalScore =
+                                                    (ref.watch(coralL1) * 3) +
+                                                        (ref.watch(coralL2) *
+                                                            4) +
+                                                        (ref.watch(coralL3) *
+                                                            6) +
+                                                        (ref.watch(coralL4) *
+                                                            8) +
+                                                        (ref.watch(
+                                                            processedAlgae) *
+                                                            6) +
+                                                        (ref.watch(
+                                                            unprocessedAlgae) *
+                                                            2) +
+                                                        (ref.watch(algaeNet) *
+                                                            4);
+
+                                                return Padding(
+                                                  padding: const EdgeInsets
+                                                      .symmetric(
+                                                      horizontal: 20.0,
+                                                      vertical: 12.0),
+                                                  child: Row(
+                                                    mainAxisAlignment: MainAxisAlignment
+                                                        .spaceBetween,
+                                                    children: [
+                                                      Text(
+                                                        "Total Score",
+                                                        style: GoogleFonts
+                                                            .nunito(
+                                                          fontSize: 18.0,
+                                                          fontWeight: FontWeight
+                                                              .w900,
+                                                          color: Colors.white,
+                                                        ),
+                                                      ),
+                                                      Text(
+                                                        "$totalScore pts",
+                                                        style: GoogleFonts
+                                                            .nunito(
+                                                          fontSize: 22.0,
+                                                          fontWeight: FontWeight
+                                                              .w900,
+                                                          color: Colors
+                                                              .orangeAccent,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                );
+                                              },
                                             ),
                                           ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              IconButton(
-                                                onPressed: () =>
-                                                    ref
-                                                        .read(unprocessedAlgae
-                                                        .notifier)
-                                                        .decrement(),
-                                                icon: const Icon(
-                                                    Icons.remove_circle_outline,
-                                                    color: Colors.white),
-                                              ),
-                                              Padding(
-                                                padding: const EdgeInsets
-                                                    .symmetric(
-                                                    horizontal: 10.0),
-                                                child: Text(
-                                                  "$unprocessedAlgaeCount",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 20.0,
-                                                    fontWeight: FontWeight.w900,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                              IconButton(
-                                                onPressed: () =>
-                                                    ref
-                                                        .read(unprocessedAlgae
-                                                        .notifier)
-                                                        .increment(),
-                                                icon: const Icon(
-                                                    Icons.add_circle_outline,
-                                                    color: Colors.white),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withValues(alpha: 0.12),
-                                  borderRadius: BorderRadius.circular(16.0),
-                                  border: Border.all(color: Colors.white
-                                      .withValues(alpha: 0.2), width: 1.0),
-                                ),
-                                child: Consumer(
-                                    builder: (context, ref, child) {
-                                      final netCount = ref.watch(algaeNet);
-                                      final netPoints = netCount * 4;
-                                      return Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 20.0, vertical: 12.0),
-                                          child: Row(
-                                            children: [
-                                              Expanded(
-                                                child: Text(
-                                                  "Algae Net",
-                                                  style: GoogleFonts.nunito(
-                                                    fontSize: 18.0,
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.min,
-                                                children: [
-                                                  IconButton(
-                                                    onPressed: () =>
-                                                        ref
-                                                            .read(
-                                                            algaeNet.notifier)
-                                                            .decrement(),
-                                                    icon: const Icon(Icons
-                                                        .remove_circle_outline,
-                                                        color: Colors.white),
-                                                  ),
-                                                  Padding(
-                                                    padding: const EdgeInsets
-                                                        .symmetric(
-                                                        horizontal: 10.0),
-                                                    child: Text(
-                                                      "$netCount",
-                                                      style: GoogleFonts.nunito(
-                                                        fontSize: 20.0,
-                                                        fontWeight: FontWeight
-                                                            .w900,
-                                                        color: Colors.white,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  IconButton(
-                                                    onPressed: () =>
-                                                        ref
-                                                            .read(
-                                                            algaeNet.notifier)
-                                                            .increment(),
-                                                    icon: const Icon(Icons
-                                                        .add_circle_outline,
-                                                        color: Colors.white),
-                                                  ),
-                                                ],
-                                              ),
-                                            ],
-                                          )
-                                      );
-                                    }
-                                ),
-                              ),
                   ],
                  ),
                 ],
